@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+  sender:
+    build:
+      context: ./
+      target: development-build-stage
+      dockerfile: Dockerfile
+    container_name: sender
+    ports:
+      - '3002:3002'
+    volumes:
+      - ./:/sender
+      - /sender/node_modules
+    restart: 'unless-stopped'
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
+
+volumes:
+  data:
+    driver: local

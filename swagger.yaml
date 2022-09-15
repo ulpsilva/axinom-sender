@@ -1,0 +1,25 @@
+tags:
+- name: Upload
+  description: Upload API
+
+paths:
+  /api/v1/upload:
+    post:
+      tags:
+        - Upload
+      description: Upload zip file
+      consumes:
+        - multipart/form-data
+      parameters:
+        - name: file
+          in: formData
+          description: 'zip file'
+          required: true
+          type: file
+      responses:
+        '200':
+          description: Access token
+
+schemes:
+ - https
+ - http
